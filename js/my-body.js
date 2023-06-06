@@ -12,33 +12,27 @@ export class myBody extends HTMLElement {
     async components() {
         return await (await fetch("view/my-body.html")).text();
     }
-    selection(e) {
+    async add(e){
+        /**
+         * todo: Miguel del futuro arregle esto ▼ 
+         * ? Arreglar esto se duplica :(
+         * * Miguel del pasado ya se arreglo garcias a lo developers semiseñor by: dDaniel, Brayan
+         */
         let $ = e.target;
         if ($.nodeName == "BUTTON") {
-            let inputs = document.querySelectorAll(`#${$.dataset.row} input`);
-            if ($.innerHTML == "-") {
-                inputs.forEach(element => {
-                    if (element.name == "amount" && element.value == 0) {
-                        document.querySelector(`#${$.dataset.row}`).remove();
-                    } else if (element.name == "amount") {
-                        element.value--;
-                    }
-                });
-            } else if ($.innerHTML == "+") {
-                inputs.forEach(element => {
-                    if (element.name == "amount") {
-                        element.value++;
-                    }
-                });
-            }
+            this.plantilla = this.querySelector("#products").children;
+            this.plantilla =  this.plantilla[ this.plantilla.length-1];
+            this.plantilla =  this.plantilla.cloneNode(true);
+            document.querySelector("#products").insertAdjacentElement("beforeend", this.plantilla);
         }
     }
     connectedCallback() {
         this.components().then(html => {
             this.innerHTML = html;
-            this.container = this.querySelector("#products");
-            this.container.addEventListener("click", this.selection);
+            this.add = this.querySelector("#add").addEventListener("click", this.add.bind(this));
+         
         })
     }
 }
 customElements.define('my-body', myBody);
+
