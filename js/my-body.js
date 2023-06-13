@@ -26,7 +26,7 @@ export class myBody extends HTMLElement {
             document.querySelector("#products").insertAdjacentElement("beforeend", this.plantilla);
         }
     }
-    send(e){
+    async send(e){
         /**
          * todo: Miguel del futuro si vas a ingresar mas input ten encuenta esto ▼ 
          * ? Si los datos del formulario cresen osea si por pura casualidad
@@ -56,6 +56,11 @@ export class myBody extends HTMLElement {
         });
         data.info = info;
         data.producto = producto.product;
+
+        console.log(JSON.stringify(data));
+        // let peticio = await fetch("uploads/app.php");
+        // let res = await peticio.text();
+        // document.querySelector("pre").innerHTML = res;
     }
     connectedCallback() {
         this.components().then(html => {
