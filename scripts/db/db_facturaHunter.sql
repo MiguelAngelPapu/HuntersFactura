@@ -33,4 +33,21 @@ ALTER TABLE tb_bill ADD fk_id_product INT(25) NOT NULL COMMENT 'Relacion del la 
 */
 ALTER TABLE tb_bill ADD CONSTRAINT tb_bill_tb_client_fk FOREIGN KEY(fk_identificacion) REFERENCES tb_client(identificacion);
 ALTER TABLE tb_bill ADD CONSTRAINT tb_bill_tb_seller_fk FOREIGN KEY(fk_id_seller) REFERENCES tb_seller(id_seller);
-ALTER TABLE tb_bill ADD CONSTRAINT tb_bill_tb_product_fk FOREIGN KEY(fk_id_product) REFERENCES tb_product(id_product)
+ALTER TABLE tb_bill ADD CONSTRAINT tb_bill_tb_product_fk FOREIGN KEY(fk_id_product) REFERENCES tb_product(id_product);
+
+SELECT * FROM tb_client WHERE identificacion=1215496 OR address = "campus";
+
+
+
+INSERT INTO tb_client(identificacion,full_name,email,address,phone) VALUES("123456789","Miguel Angel","ma@gmail.com","Calle 11","+57 3055484");
+
+SELECT * FROM tb_client ORDER BY full_name LIMIT 5 OFFSET 9;
+
+SELECT full_name as 'Nombre' FROM tb_client ORDER BY full_name;
+SELECT COUNT(*) INTO @AAA FROM tb_client;
+SELECT @AAA;
+
+
+UPDATE tb_client SET full_name = "MARSHALL NOSSA", address = "Campus" WHERE identificacion = 1005541741;
+
+DELETE FROM tb_client WHERE identificacion = 54354345;
