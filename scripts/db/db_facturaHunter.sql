@@ -51,3 +51,6 @@ SELECT @AAA;
 UPDATE tb_client SET full_name = "MARSHALL NOSSA", address = "Campus" WHERE identificacion = 1005541741;
 
 DELETE FROM tb_client WHERE identificacion = 54354345;
+
+
+SELECT identificacion AS "cc", full_name AS "name", email AS "email", address AS "direction" ,phone AS "cellphone" FROM tb_client;
